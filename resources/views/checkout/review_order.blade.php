@@ -87,7 +87,7 @@
                                     </td>
                                     <td class="cart_description">
                                         <h4><a href="">{{$cart_data->product_name}}</a></h4>
-                                        <p>{{$cart_data->product_code}} | {{$cart_data->size}}</p>
+                                        <p>{{$cart_data->product_code}} | {{$cart_data->color}}</p>
                                     </td>
                                     <td class="cart_price">
                                         <p>${{$cart_data->price}}</p>

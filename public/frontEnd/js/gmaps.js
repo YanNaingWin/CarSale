@@ -1527,7 +1527,7 @@ GMaps.prototype.toImage = function(options) {
   var options = options || {},
       static_map_options = {};
 
-  static_map_options['size'] = options['size'] || [this.el.clientWidth, this.el.clientHeight];
+  static_map_options['color'] = options['color'] || [this.el.clientWidth, this.el.clientHeight];
   static_map_options['lat'] = this.getCenter().lat();
   static_map_options['lng'] = this.getCenter().lng();
 

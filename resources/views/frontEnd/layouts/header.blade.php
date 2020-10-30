@@ -35,22 +35,22 @@
                     <div class="btn-group pull-right">
                         <div class="btn-group">
                             <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-                                USA
+                            Myanmar
                                 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Myanmar</a></li>
+                                <li><a href="#">USA</a></li>
                                 <li><a href="#">UK</a></li>
                             </ul>
                         </div>
 
                         <div class="btn-group">
                             <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-                                DOLLAR
+                            Myanmar Kyat (MMK)
                                 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Myanmar Kyat (MMK)</a></li>
+                                <li><a href="#">DOLLAR</a></li>
                                 <li><a href="#">Pound</a></li>
                             </ul>
                         </div>

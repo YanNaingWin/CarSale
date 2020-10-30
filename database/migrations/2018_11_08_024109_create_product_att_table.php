@@ -17,7 +17,7 @@ class CreateProductAttTable extends Migration
             $table->increments('id');
             $table->integer('products_id');
             $table->string('sku');
-            $table->string('size');
+            $table->string('color');
             $table->float('price');
             $table->integer('stock');
             $table->timestamps();

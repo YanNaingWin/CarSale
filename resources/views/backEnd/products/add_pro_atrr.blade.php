@@ -30,7 +30,7 @@
                                         <div class="form-group">
                                             <input type="hidden" name="products_id" value="{{$product->id}}">
                                             <input type="text" class="form-control" name="sku" value="{{old('sku')}}" id="sku" placeholder="SKU" required>
-                                            <input type="text" class="form-control" name="size" value="{{old('size')}}" id="size" placeholder="Size" required>
+                                            <input type="text" class="form-control" name="color" value="{{old('color')}}" id="color" placeholder="color" required>
                                             <input type="text" class="form-control" name="price" value="{{old('price')}}" id="price" placeholder="Price" required>
                                             <span style="color: red;">{{$errors->first('price')}}</span>
                                             <input type="number" class="form-control" name="stock" value="{{old('stock')}}" id="stock" placeholder="Stock" required>
@@ -55,7 +55,7 @@
                                 <thead>
                                 <tr>
                                     <th>SKU</th>
-                                    <th>Size</th>
+                                    <th>color</th>
                                     <th>Price</th>
                                     <th>Stock</th>
                                     <th>Action</th>
@@ -69,7 +69,7 @@
                                         <input type="text" name="sku[]" id="sku" class="form-control" value="{{$attribute->sku}}" required="required" style="width: 75px;">
                                     </td>
                                     <td class="taskStatus">
-                                        <input type="text" name="size[]" id="size" class="form-control" value="{{$attribute->size}}" required="required" style="width: 75px;">
+                                        <input type="text" name="color[]" id="color" class="form-control" value="{{$attribute->color}}" required="required" style="width: 75px;">
                                     </td>
                                     <td class="taskOptions">
                                         <input type="text" name="price[]" id="price" class="form-control" value="{{$attribute->price}}" required="required" style="width: 75px;">
