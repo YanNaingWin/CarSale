@@ -34,9 +34,9 @@ class IndexController extends Controller
     public function getAttrs(Request $request){
         $all_attrs=$request->all();
         //print_r($all_attrs);die();
-        $attr=explode('-',$all_attrs['size']);
+        $attr=explode('-',$all_attrs['color']);
         //echo $attr[0].' <=> '. $attr[1];
-        $result_select=ProductAtrr_model::where(['products_id'=>$attr[0],'size'=>$attr[1]])->first();
+        $result_select=ProductAtrr_model::where(['products_id'=>$attr[0],'color'=>$attr[1]])->first();
         echo $result_select->price."#".$result_select->stock;
     }
 }

@@ -27,17 +27,17 @@ $(document).ready(function(){
 	        zIndex: 2147483647 // Z-Index for the overlay
 		});
 	});
-	///////////Size of Product
-	$("#idSize").change(function () {
-		var SizeAttr=$(this).val();
-		if(SizeAttr!=""){
+	///////////color of Product
+	$("#idColor").change(function () {
+		var colorAttr=$(this).val();
+		if(colorAttr!=""){
             $.ajax({
                 type:'get',
                 url:'/get-product-attr',
-                data:{size:SizeAttr},
+                data:{color:colorAttr},
                 success:function(resp){
                 	var arr=resp.split("#");
-                    $("#dynamic_price").html('US $'+arr[0]);
+                    $("#dynamic_price").html(arr[0] + 'MMK');
                     $("#dynamicPriceInput").val(arr[0]);
                     if(arr[1]==0){
 						$("#buttonAddToCart").hide();
@@ -49,7 +49,7 @@ $(document).ready(function(){
                         $("#inputStock").val(arr[1]);
 					}
                 },error:function () {
-                    alert("Error Select Size");
+                    alert("Error Select color");
                 }
             });
 		}

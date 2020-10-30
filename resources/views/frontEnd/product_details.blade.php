@@ -46,15 +46,15 @@
                         <h2>{{$detail_product->p_name}}</h2>
                         <p>Code ID: {{$detail_product->p_code}}</p>
                         <span>
-                            <select name="size" id="idSize" class="form-control">
-                        	<option value="">Select Size</option>
+                            <select name="color" id="idColor" class="form-control">
+                        	<option value="">Select Color</option>
                             @foreach($detail_product->attributes as $attrs)
-                                <option value="{{$detail_product->id}}-{{$attrs->size}}">{{$attrs->size}}</option>
+                                <option value="{{$detail_product->id}}-{{$attrs->color}}">{{$attrs->color}}</option>
                             @endforeach
                         </select>
                         </span><br>
                         <span>
-                            <span id="dynamic_price">US ${{$detail_product->price}}</span>
+                            <span id="dynamic_price">{{$detail_product->price}} MMK</span>
                             <label>Quantity:</label>
                             <input type="text" name="quantity" value="{{$totalStock}}" id="inputStock"/>
                             @if($totalStock>0)
@@ -83,7 +83,6 @@
             <div class="col-sm-12">
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#details" data-toggle="tab">Details</a></li>
-                    <li><a href="#companyprofile" data-toggle="tab">Company Profile</a></li>
                     <li><a href="#reviews" data-toggle="tab">Reviews (5)</a></li>
                 </ul>
             </div>
@@ -92,65 +91,14 @@
                     {{$detail_product->description}}
                 </div>
 
-                <div class="tab-pane fade" id="companyprofile" >
-                    <div class="col-sm-3">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <img src="{{asset('frontEnd/images/home/gallery1.jpg')}}" alt="" />
-                                    <h2>$56</h2>
-                                    <p>Easy Polo Black Edition</p>
-                                    <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <img src="{{asset('frontEnd/images/home/gallery3.jpg')}}" alt="" />
-                                    <h2>$56</h2>
-                                    <p>Easy Polo Black Edition</p>
-                                    <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <img src="{{asset('frontEnd/images/home/gallery2.jpg')}}" alt="" />
-                                    <h2>$56</h2>
-                                    <p>Easy Polo Black Edition</p>
-                                    <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <img src="{{asset('frontEnd/images/home/gallery4.jpg')}}" alt="" />
-                                    <h2>$56</h2>
-                                    <p>Easy Polo Black Edition</p>
-                                    <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <div class="tab-pane fade" id="reviews" >
                     <div class="col-sm-12">
                         <ul>
-                            <li><a href=""><i class="fa fa-user"></i>EUGEN</a></li>
+                            <li><a href=""><i class="fa fa-user"></i>Yan Naing Win</a></li>
                             <li><a href=""><i class="fa fa-clock-o"></i>12:41 PM</a></li>
                             <li><a href=""><i class="fa fa-calendar-o"></i>31 DEC 2014</a></li>
                         </ul>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                        <p>Best Sport Car to drive</p>
                         <p><b>Write Your Review</b></p>
 
                         <form action="#">
@@ -170,40 +118,7 @@
             </div>
         </div><!--/category-tab-->
 
-        <div class="recommended_items"><!--recommended_items-->
-            <h2 class="title text-center">recommended items</h2>
-
-            <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner">
-                    <?php $countChunk=0;?>
-                    @foreach($relateProducts->chunk(3) as $chunk)
-                        <?php $countChunk++; ?>
-                        <div class="item<?php if($countChunk==1){ echo' active';} ?>">
-                            @foreach($chunk as $item)
-                                <div class="col-sm-4">
-                                    <div class="product-image-wrapper">
-                                        <div class="single-products">
-                                            <div class="productinfo text-center">
-                                                <img src="{{url('/products/small',$item->image)}}" alt="" style="width: 150px;"/>
-                                                <h2>{{$item->price}}</h2>
-                                                <p>{{$item->p_name}}</p>
-                                                <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                    @endforeach
-                </div>
-                <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
-                    <i class="fa fa-angle-left"></i>
-                </a>
-                <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
-                    <i class="fa fa-angle-right"></i>
-                </a>
-            </div>
-        </div><!--/recommended_items-->
+         
 
     </div>
         </div>

@@ -37,7 +37,7 @@ class ProductAtrrController extends Controller
     {
         $this->validate($request,[
             'sku'=>'required',
-            'size'=>'required',
+            'color'=>'required',
             'price'=>'required|numeric|between:0,99.99',
             'stock'=>'required|numeric'
         ]);
@@ -82,7 +82,7 @@ class ProductAtrrController extends Controller
         $request_data=$request->all();
         foreach ($request_data['id'] as $key=>$attr){
             $update_attr=ProductAtrr_model::where([['products_id',$id],['id',$request_data['id'][$key]]])
-                ->update(['sku'=>$request_data['sku'][$key],'size'=>$request_data['size'][$key],'price'=>$request_data['price'][$key],
+                ->update(['sku'=>$request_data['sku'][$key],'color'=>$request_data['color'][$key],'price'=>$request_data['price'][$key],
                     'stock'=>$request_data['stock'][$key]]);
         }
         return back()->with('message','Update Attribute Successed');

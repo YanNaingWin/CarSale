@@ -24,8 +24,8 @@ class CartController extends Controller
         $inputToCart=$request->all();
         Session::forget('discount_amount_price');
         Session::forget('coupon_code');
-        if($inputToCart['size']==""){
-            return back()->with('message','Please select Size');
+        if($inputToCart['color']==""){
+            return back()->with('message','Please select Color');
         }else{
             $stockAvailable=DB::table('product_att')->select('stock','sku')->where(['products_id'=>$inputToCart['products_id'],
                 'price'=>$inputToCart['price']])->first();
@@ -37,12 +37,12 @@ class CartController extends Controller
                     Session::put('session_id',$session_id);
                 }
                 $inputToCart['session_id']=$session_id;
-                $sizeAtrr=explode("-",$inputToCart['size']);
-                $inputToCart['size']=$sizeAtrr[1];
+                $colorAtrr=explode("-",$inputToCart['color']);
+                $inputToCart['color']=$colorAtrr[1];
                 $inputToCart['product_code']=$stockAvailable->sku;
                 $count_duplicateItems=Cart_model::where(['products_id'=>$inputToCart['products_id'],
                     'product_color'=>$inputToCart['product_color'],
-                    'size'=>$inputToCart['size']])->count();
+                    'color'=>$inputToCart['color']])->count();
                 if($count_duplicateItems>0){
                     return back()->with('message','This Item Added already');
                 }else{
@@ -64,10 +64,10 @@ class CartController extends Controller
     public function updateQuantity($id,$quantity){
         Session::forget('discount_amount_price');
         Session::forget('coupon_code');
-        $sku_size=DB::table('cart')->select('product_code','size','quantity')->where('id',$id)->first();
-        $stockAvailable=DB::table('product_att')->select('stock')->where(['sku'=>$sku_size->product_code,
-            'size'=>$sku_size->size])->first();
-        $updated_quantity=$sku_size->quantity+$quantity;
+        $sku_color=DB::table('cart')->select('product_code','color','quantity')->where('id',$id)->first();
+        $stockAvailable=DB::table('product_att')->select('stock')->where(['sku'=>$sku_color->product_code,
+            'color'=>$sku_color->color])->first();
+        $updated_quantity=$sku_color->quantity+$quantity;
         if($stockAvailable->stock>=$updated_quantity){
             DB::table('cart')->where('id',$id)->increment('quantity',$quantity);
             return back()->with('message','Update Quantity already');
